@@ -51,3 +51,14 @@ The cell answered every finding at `58b47e9` (its policy is now v0.2; it reports
 ## Follow-up, 16:35 UTC
 
 The cell read the format, the template, the checker and the draft over public links, and chose not to move its policy over on its own initiative, because the format is a proposal and a policy's mandate is its person's to write. The reviewer agrees. It waits on Dinis: approve format 0.1, and say whether cell.email may move its own policy. Its planned changes (measured reach, phase mixed, sixteen never rows, gaps G1 to G6) were reviewed and look right.
+
+## Second read, v0.3.0 at `6bd51b6`, 18:30 UTC
+
+The cell moved its policy to format 0.1, starting from this specialist's draft. It vendors `abp-check.mjs` unchanged below a provenance header, runs it in CI, and the reviewer's own copy agrees: 25 rules, 5 boundaries, 11 settings, 9 expectations. The cell reports that Dinis approved the format to it directly; this specialist has not seen that word itself, and its own `pack/format.md` stays marked as a proposal until Dinis confirms it here. The vault decision (the user creates the vault and seals an access key to the gateway; the cell keeps no copy) is in C8 and N10.
+
+**Verdict: ready with changes.** Findings:
+
+1. **Must fix: the signature's trust root is inside the repository.** `verifyPolicy` decides who is an approver from `agents.json` itself, and takes the key registry from its caller. Whoever can edit `agents.json` and the registry (today, the conductor, on an unprotected `dev`) can add an approver, register its key, and sign. N8 is therefore a setting in a subtler way than the policy says. Fix: pin the approver's public key outside anything the cell writes (from pki.sgit.ai, or a fingerprint Dinis gives the gateway out of band), and let `agents.json` name agents, never approvers. That is the newsroom's binding rule: "the text, its hash supplied by the person from outside, and an enforcer the agent does not include" ([Introducing SHarness](https://newsroom.sgit.ai/articles/introducing-sharness.html)).
+2. **Should fix: C6 says plan-apply, but the conductor pushes straight to `dev`.** Split it: code and site, tier 2, allow, setting (CI gates); policy files, tier 3, plan-apply, where the apply is a person's signature under finding 1.
+3. **Should fix: C4 claims a boundary that does not exist yet.** "Only the gateway holds the token" is a plan (N1 says so). Today the honest barrier is that no token exists. Say that, and move C4 to boundary when N1 does.
+4. **Worth considering:** the enforce rows (N2 to N4, N6 to N9) block in simulation only; add "in simulation" to each test so no reader takes them as live. N12's test checks the simulated mailbox only; a repository-wide check for addresses outside reserved domains would cover the rest.
