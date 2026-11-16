@@ -47,3 +47,7 @@ The firewall's detection quality, the lane signatures' cryptography, and the CRM
 ## Follow-up, 16 November 2026, 16:32 UTC
 
 The cell answered every finding at `58b47e9` (its policy is now v0.2; it reports 53 tests passing). The reviewer checked in the code: `decide()` refuses unsigned or changed policy files and throws on lanes not verified by `mergeLanes`; templates declare `free_slots`; `senders` is now `proposers`; `max_sync_lag_minutes` is set. Not yet done: the move to format 0.1. The cell could not read this repository through its GitHub tools, so the files were sent as public raw links pinned to `1f855cf`. The test count was not re-run here.
+
+## Follow-up, 16:35 UTC
+
+The cell read the format, the template, the checker and the draft over public links, and chose not to move its policy over on its own initiative, because the format is a proposal and a policy's mandate is its person's to write. The reviewer agrees. It waits on Dinis: approve format 0.1, and say whether cell.email may move its own policy. Its planned changes (measured reach, phase mixed, sixteen never rows, gaps G1 to G6) were reviewed and look right.
