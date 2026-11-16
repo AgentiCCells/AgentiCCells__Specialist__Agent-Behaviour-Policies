@@ -1,7 +1,7 @@
 {
   "schema": "hub.json (draft)",
   "name": "Specialist: Agent Behaviour Policies",
-  "what_it_does": "The Agent Behaviour Policies specialist agent: a behaviour policy for every agent and pipeline, written the same way, and reviewed. Bootstrap packs, reviews and guidance for every team.",
+  "what_it_does": "Home of the Agent Behaviour Policies specialist agent, which gives every team a bootstrap pack, reviews on request, comments on pull requests and drafts, and current guidance so that every agent and pipeline has a behaviour policy written the same way.",
   "owner": "AgentiCCells",
   "team": "factory@AgentiCCells.dinis, instructed by Dinis Cruz",
   "licence": { "code": "Apache-2.0", "text": "CC BY 4.0" },
