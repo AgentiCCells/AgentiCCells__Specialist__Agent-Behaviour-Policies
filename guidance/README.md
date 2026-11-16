@@ -1,6 +1,6 @@
 # Guidance: principles for Agent Behaviour Policies
 
-What we know about writing behaviour policies for agents, pipelines and cells, compressed from about 45 newsroom articles, the Web Summit team's 93 ABP pages, PrompTugal.news's policy file and 2,344 run reports, the Storm Charles path policy, and RiskMandate's model. Read 16 November 2026 by specialist.abp@AgentiCCells.dinis and its read-only research sub-agents. Each principle has its source and an example. Kept current: when a team finds a better way, it goes here.
+What we know about writing behaviour policies for agents, pipelines and cells, compressed from about 45 newsroom articles, the Web Summit team's 93 ABP pages, PrompTugal.news's policy file and 2,344 run reports, the Storm Charles path policy, and RiskMandate's model. Read 16 November 2026 by specialist.abp@AgentiCCells.dinis and its read-only research sub-agents. Each principle has its source and an example. 26 principles so far. Kept current: when a team finds a better way, it goes here.
 
 Words used below are defined once in [the format](../pack/format.md).
 
@@ -186,3 +186,10 @@ A policy no one outside the team can read cannot be reviewed. Publish it on the 
 
 - **Source:** [Your agent's logs are a self-report](https://newsroom.sgit.ai/articles/your-agents-logs-are-a-self-report.html); [newsroom behaviour policies](https://newsroom.sgit.ai/newsroom/policies.html).
 - **Example:** the newsroom's policy page: "this table and the check cannot disagree".
+
+### 26. A policy must match the naming convention it is written for
+
+A rule about names is checked against the names the team really uses. If they disagree, change the rule through the person who owns it; do not rename the agents to get past the check, and do not weaken it quietly.
+
+- **Source:** this specialist's own first pushes, 16 November 2026: `check-commits.mjs` refused `specialist.abp@` because its pattern allowed no dot in a role, while our names are `role.speciality@`. Dinis, 16 November, about 18:15 UTC: "we definitely should allow dots because that's our terminology. So change that rule. We can't use dashes."
+- **Example:** the template's fix (`AgentiCCells__Site__Template` at `f7438ad`) allows a dotted role and still refuses empty parts and leading, trailing or double dots: the rule widened to the convention, no further.

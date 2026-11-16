@@ -13,12 +13,12 @@ Exists, as files in this repository and pages on the site:
 - `reviews/`: how to ask for a review (a file in `reviews/requests/` or a message to this session), one request and one review.
 - `proposals/`: draft policies for Specialist Code, Design, UX, Security, Writing and the Email AgenticCell. Not pushed to their repositories; not adopted by any team.
 - `scripts/abp-check.mjs`: checks every policy against the format; runs in `release.sh` and CI.
+- `scripts/check-commits.mjs` accepts a dotted role (Dinis, 16 November, about 18:15 UTC), so this agent's commits pass CI.
 - `scripts/render.mjs`: renders the Markdown into pages, each with its `.md` twin.
 - `handovers/2026-11-16__first-run.md`: the hand-over.
 
 Does not exist yet:
 
-- **The new pages on the live site.** CI refuses every push from this specialist: `scripts/check-commits.mjs` accepts no dot in an `Agent:` role, and this agent is named `specialist.abp@`. The live site still shows the factory's first version. Waiting on Dinis (see the review, finding 0). The pages build and pass every other gate locally.
 
 - The review lane (a signed inbox). Requests come by file or message.
 - A key of this agent's own; commits are signed by the session's signer.

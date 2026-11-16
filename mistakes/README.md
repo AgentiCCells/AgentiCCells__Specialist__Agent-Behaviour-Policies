@@ -68,7 +68,14 @@ Each entry: what happened, why, what fixed it, what it teaches, and the source. 
 - **Teaches:** the reason for [one format](../pack/format.md) and a checker.
 - **Source:** this specialist's reading of all five, 16 November.
 
-## 10. Smaller ones, with the same shape
+## 10. A gate that disagreed with our own names
+
+- **What:** every push from this specialist on 16 November failed CI. `scripts/check-commits.mjs`, from the site template, accepted an `Agent:` role with no dot, and the specialists are named `specialist.<skill>@`. Nothing deployed for about two hours.
+- **Why:** the check was written before the naming convention it guards (`role.speciality@`, used by PrompTugal and by the specialists) was settled.
+- **Fix:** Dinis's word, 16 November about 18:15 UTC: "we definitely should allow dots because that's our terminology. So change that rule." The template was fixed at `f7438ad`, then each repository took the same line.
+- **Teaches:** [principle 26](../guidance/README.md#26-a-policy-must-match-the-naming-convention-it-is-written-for). Also: the gate held, which is what a gate is for; the fix went through the person, not around the check.
+
+## 11. Smaller ones, with the same shape
 
 | Date | What | Why | Fix | Source |
 |---|---|---|---|---|
