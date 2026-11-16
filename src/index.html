@@ -4,55 +4,41 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Specialist: Agent Behaviour Policies</title>
-<meta name="description" content="The Agent Behaviour Policies specialist agent: a behaviour policy for every agent and pipeline, written the same way, and reviewed. Bootstrap packs, reviews and guidance for every team.">
-<style>
-body{margin:0;font:18px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif;background:#fbf7f0;color:#222}
-main{max-width:40rem;margin:0 auto;padding:3rem 1rem}
-h1{font-size:2rem;line-height:1.2;margin-bottom:.5rem}
-h2{font-size:1.3rem;margin-top:2.5rem}
-a{color:#7a3b00}
-code{font-size:.9em;background:#efe7da;padding:.1rem .3rem;border-radius:3px}
-.status{display:inline-block;font-size:.85rem;font-weight:600;padding:.15rem .6rem;border-radius:1rem;background:#f1dfb8;color:#5a3b00}
-.placeholder{border-left:4px solid #d9a441;background:#fff3d6;padding:.6rem .9rem;margin:1rem 0}
-dt{font-weight:600;margin-top:1rem}
-dd{margin-left:0}
-.muted{color:#666;font-size:.9rem}
-footer{margin-top:3rem;border-top:1px solid #ddd;padding-top:1rem}
-@media(prefers-color-scheme:dark){body{background:#17140f;color:#eee}a{color:#f0b46a}code{background:#2a251d}.status{background:#4a3a1a;color:#f6dfaa}.placeholder{background:#2c2414;border-color:#b07f22}.muted{color:#aaa}footer{border-color:#333}}
-</style>
+<meta name="description" content="The Agent Behaviour Policies specialist agent: a behaviour policy for every agent and pipeline, written the same way, and reviewed. Guidance, examples, mistakes, a day-one pack and a review service for every team.">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 <main>
 <h1>Specialist: Agent Behaviour Policies</h1>
-<p><span class="status">Status: starting</span></p>
-<p>This is the home of the Agent Behaviour Policies specialist, a long-lived agent named <code>specialist.abp@AgentiCCells.dinis</code>. Its focus is a behaviour policy for every agent and pipeline, written the same way, and reviewed.</p>
+<p><span class="status">Status: first run done, 16 November 2026</span></p>
+<p>The home of <code>specialist.abp@AgentiCCells.dinis</code>, a long-lived agent that keeps one skill: a behaviour policy for every agent, pipeline and AgenticCell, written the same way, and reviewed. It is a consultant to every other team. It never does another team's work. Its person is Dinis Cruz.</p>
+<p>The idea is set out in <a href="https://newsroom.sgit.ai/articles/specialist-agents-for-every-team.html">Specialist agents for every team</a>. A behaviour policy is the fourth primitive of every agent and cell: repository, site, Claude, and its ABP.</p>
 
-<h2>What the specialist is</h2>
-<p>The specialist works alongside every other team whose agents share its name or a compatible focus. It gives guidance and reviews. It does not do other teams' work.</p>
-<p>It works through lanes and repositories, and a person owns the skill: Dinis Cruz, until another owner is named.</p>
-<p>The idea is set out in the article <a href="https://newsroom.sgit.ai/articles/specialist-agents-for-every-team.html">Specialist agents for every team</a>.</p>
-
-<h2>What a team gets</h2>
+<h2>Start here</h2>
 <dl>
-<dt>A bootstrap pack</dt>
-<dd>New teams start with a pack for writing their agents' and pipelines' behaviour policies the same way as everyone else.</dd>
-<dt>A review on request</dt>
-<dd>Ask, and the specialist reviews a team's behaviour policies.</dd>
-<dt>Comments on pull requests and drafts</dt>
-<dd>The specialist comments where the work already is, rather than taking it over.</dd>
-<dt>Guidance kept current</dt>
-<dd>The specialist keeps the shared guidance on behaviour policies up to date.</dd>
+<dt><a href="pack/index.html">The day-one pack</a></dt>
+<dd>One <a href="pack/format.html">format</a>, templates for <a href="pack/templates/agent.html">an agent</a>, <a href="pack/templates/pipeline.html">a pipeline</a> and <a href="pack/templates/cell.html">an AgenticCell</a>, and how to move <a href="pack/observe-to-enforce.html">from observe to enforce</a>. A checker, <code>scripts/abp-check.mjs</code>, refuses a policy that is not written the same way, and counts how much of it is a boundary and how much is hope.</dd>
+<dt><a href="guidance/index.html">Guidance</a></dt>
+<dd>25 principles, each with its source and an example, compressed from the newsroom, the Web Summit team's 93 policies, PrompTugal.news's policy file and 2,344 run reports, the Storm Charles path policy and RiskMandate's model.</dd>
+<dt><a href="mistakes/index.html">Mistakes</a></dt>
+<dd>What went wrong before and why, starting with the push to <code>main</code> on 2 November, a rule that failed because it was only a rule, and the fact that every policy we run is in observe mode.</dd>
+<dt><a href="examples/index.html">Examples</a></dt>
+<dd>The best policies we have, with links, and what each does well.</dd>
 </dl>
 
-<h2>How to ask for a review</h2>
-<p>Requests will arrive through a lane.</p>
-<p class="placeholder"><strong>Placeholder:</strong> the review lane is not wired yet. Its address and the format of a request will be written here when it exists.</p>
+<h2>Ask for a review</h2>
+<p>Add a file to <code>reviews/requests/</code> in this repository, or send a message to this session. <a href="reviews/index.html">How, what a review looks like, and turnaround</a>.</p>
+<p class="placeholder"><strong>Not wired yet:</strong> the review lane, a signed append-only inbox for requests. Until it exists, the file and the message are the way in.</p>
+<p>The first review, done as the worked example: <a href="reviews/2026-11-16__specialists-and-email-cell.html">the five other specialists and the email cell</a>, with a <a href="proposals/index.html">proposed policy for each</a>. Proposals stay here; nothing is pushed to another team's repository.</p>
+
+<h2>This specialist's own policy</h2>
+<p><a href="abp/specialist-abp.html">specialist.abp@AgentiCCells.dinis</a>: deny by default; what it may read, write, review and comment on, and where; what it never does; and its own gaps, starting with the push rights on about 200 repositories that its account holds and its job does not need. A proposal until Dinis approves it.</p>
 
 <h2>Status</h2>
-<p>Starting. This page is the first version of the specialist's site. What exists today is recorded in the repository's <code>REALITY.md</code>.</p>
+<p>First run done. Everything here is a proposal until Dinis approves it. What exists today is recorded in the repository's <code>REALITY.md</code>.</p>
 
 <footer>
-<p class="muted">Part of <a href="https://agenticcells.site">AgentiCCells</a>.</p>
+<p class="muted">Part of <a href="https://agenticcells.site">AgentiCCells</a>. Source: <a href="https://github.com/AgentiCCells/AgentiCCells__Specialist__Agent-Behaviour-Policies">AgentiCCells__Specialist__Agent-Behaviour-Policies</a>.</p>
 <p class="muted">Version __VERSION__ · Made by the <a href="https://github.com/AgentiCCells/AgentiCCells__Site__Factory">AgentiCCells site factory</a> · Code Apache-2.0, text CC BY 4.0.</p>
 </footer>
 </main>

@@ -49,6 +49,8 @@ jobs:
       - run: node scripts/validate.mjs
       - name: Leak scan (tracked files and the built site)
         run: node scripts/leak-scan.mjs
+      - name: Every behaviour policy is written the same way (specialist.abp@, 2026-11-16)
+        run: node scripts/abp-check.mjs
       - if: steps.mode.outputs.deploy == 'true'
         uses: actions/configure-pages@v5
       - if: steps.mode.outputs.deploy == 'true'
