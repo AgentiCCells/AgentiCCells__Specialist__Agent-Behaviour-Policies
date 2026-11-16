@@ -98,7 +98,8 @@ function list(block) {
     }
   }
   const tag = ordered ? 'ol' : 'ul';
-  return `<${tag}>${items.map((it) => `<li>${inline(it.text.join(' '))}${it.sub.length ? list(it.sub) : ''}</li>`).join('')}</${tag}>`;
+  const start = ordered ? Number(block[0].match(/^\s*(\d+)\./)[1]) : 1;
+  return `<${tag}${start !== 1 ? ` start="${start}"` : ''}>${items.map((it) => `<li>${inline(it.text.join(' '))}${it.sub.length ? list(it.sub) : ''}</li>`).join('')}</${tag}>`;
 }
 
 const walk = (d) => readdirSync(d).flatMap((f) => { const p = join(d, f); return statSync(p).isDirectory() ? walk(p) : [p]; });
