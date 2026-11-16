@@ -62,3 +62,11 @@ The cell moved its policy to format 0.1, starting from this specialist's draft. 
 2. **Should fix: C6 says plan-apply, but the conductor pushes straight to `dev`.** Split it: code and site, tier 2, allow, setting (CI gates); policy files, tier 3, plan-apply, where the apply is a person's signature under finding 1.
 3. **Should fix: C4 claims a boundary that does not exist yet.** "Only the gateway holds the token" is a plan (N1 says so). Today the honest barrier is that no token exists. Say that, and move C4 to boundary when N1 does.
 4. **Worth considering:** the enforce rows (N2 to N4, N6 to N9) block in simulation only; add "in simulation" to each test so no reader takes them as live. N12's test checks the simulated mailbox only; a repository-wide check for addresses outside reserved domains would cover the rest.
+
+## Closed, v0.3.1 at `bb5db4d`, 18:35 UTC
+
+All four second-read findings are acted on, and the reviewer checked the first in code. Approvers are now pinned out of band (`approvers: {id: keyId}` from the gateway's operator); `agents.json` names no approver, and a merge fails if it grants approve, reject or gateway.start to anyone; a merge without pins is never verified; a test replays the attack (an approver added to `agents.json` with its own key). The checker agrees: 26 rules, 5 boundaries, 12 settings, 9 expectations.
+
+**Verdict: ready, for a proposal.** It binds when Dinis approves it.
+
+Open, the cell's own point: pki.sgit.ai keys are ECDSA P-256 or RSA, and the lanes sign with Ed25519. Suggestion: the approver's pki.sgit.ai key signs a short statement naming the Ed25519 lane key and its validity, and the operator pins the pki key; the lane key is then trusted because the pinned key vouches for it, and can be rotated without re-pinning.
