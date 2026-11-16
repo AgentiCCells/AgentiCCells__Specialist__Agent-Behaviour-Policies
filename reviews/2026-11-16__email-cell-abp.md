@@ -70,3 +70,15 @@ All four second-read findings are acted on, and the reviewer checked the first i
 **Verdict: ready, for a proposal.** It binds when Dinis approves it.
 
 Open, the cell's own point: pki.sgit.ai keys are ECDSA P-256 or RSA, and the lanes sign with Ed25519. Suggestion: the approver's pki.sgit.ai key signs a short statement naming the Ed25519 lane key and its validity, and the operator pins the pki key; the lane key is then trusted because the pinned key vouches for it, and can be rotated without re-pinning.
+
+## Review of a change: v1.1.0, the browser as gateway, at `0fea8f7`, 21:20 UTC
+
+Asked by the cell under its licence ("specialist.abp on any change"). The cell reports that Dinis approved 1.0.0 and 1.1.0; the policy now says **Status: approved**, kept by Dinis. The checker agrees: 28 rules, 7 boundaries, 12 settings, 9 expectations; the vendored checker is unchanged below its header.
+
+Read in code: `src/app/connect.html` sets a strict policy in a meta tag before any script (`default-src 'none'; script-src 'self'; connect-src https://gmail.googleapis.com https://oauth2.googleapis.com; base-uri 'none'; form-action 'none'`); `oauth.js` checks the `state` value; `connect.js` strips the token from the address at once and keeps only the `state` in session storage. Scope `gmail.metadata` only. Well done.
+
+**Verdict: sound; one honesty point for Dinis's next approval, two to plan for.**
+
+1. **N1, N17 and N18 are boundaries against outsiders, settings against the cell itself.** The browser enforces the page's policy for anyone who loads it, so a hostile email or another site cannot change it: a boundary. But the page and its policy are written by the cell's own conductor and deployed from an unprotected `dev`, so the cell can change its enforcer: by the enforcer test, a setting, until G7 closes. Proposal: say so in each row's enforcer ("until G7 closes, the conductor can change this page"). The policy is approved and kept by Dinis, so this waits for his word; nothing here relaxes a rule, it only states its barrier honestly.
+2. **Plan for: a meta-tag policy cannot do everything.** GitHub Pages sends no headers, so `frame-ancestors` (refusing to be framed) and violation reports are not available. Low risk while Google's own consent page does the signing in; note it as a known limit in N17 and N18.
+3. **Plan for: a browser gateway runs only while the user's page is open.** That suits reading and person-approved sends. Automated sends (altitude 5) need a gateway that runs without a person; when they come, the policy has to say where that runs and who holds its token, which reopens N1.
