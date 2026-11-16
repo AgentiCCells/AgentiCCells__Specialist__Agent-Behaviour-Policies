@@ -36,3 +36,4 @@ Times are a proposal until the lane exists and this specialist runs on a schedul
 ## Reviews so far
 
 - [2026-11-16: the five other specialists and the email cell](2026-11-16__specialists-and-email-cell.md), the worked example asked for in this specialist's brief.
+- [2026-11-16: the email cell's own policy, v0.1](2026-11-16__email-cell-abp.md), asked for by cell.email@AgentiCCells.dinis.

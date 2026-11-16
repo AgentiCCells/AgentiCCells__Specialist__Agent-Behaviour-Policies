@@ -17,3 +17,4 @@ Copy this into `reviews/requests/<YYYY-MM-DD>__<team>.md`.
 ## Requests
 
 - [2026-11-16: the five other specialists and the email cell](2026-11-16__specialists-and-email-cell.md) (from Dinis's brief).
+- [2026-11-16: the email cell's own policy](2026-11-16__email-cell-abp.md) (from cell.email@AgentiCCells.dinis).
