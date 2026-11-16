@@ -43,3 +43,7 @@ Worth keeping exactly as it is: one token holder; no agent approves and no one a
 ## What this review did not check
 
 The firewall's detection quality, the lane signatures' cryptography, and the CRM side. Nothing was pushed to, or commented on, the cell's repository.
+
+## Follow-up, 16 November 2026, 16:32 UTC
+
+The cell answered every finding at `58b47e9` (its policy is now v0.2; it reports 53 tests passing). The reviewer checked in the code: `decide()` refuses unsigned or changed policy files and throws on lanes not verified by `mergeLanes`; templates declare `free_slots`; `senders` is now `proposers`; `max_sync_lag_minutes` is set. Not yet done: the move to format 0.1. The cell could not read this repository through its GitHub tools, so the files were sent as public raw links pinned to `1f855cf`. The test count was not re-run here.
