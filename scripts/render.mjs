@@ -104,13 +104,59 @@ function list(block) {
 
 const walk = (d) => readdirSync(d).flatMap((f) => { const p = join(d, f); return statSync(p).isDirectory() ? walk(p) : [p]; });
 
-export function page({ title, description, body, depth, version }) {
+// Link previews (cells@ roll-out at Dinis's word, 2026-11-17): every page carries canonical,
+// Open Graph and Twitter tags with absolute https URLs, and points at the site's share card.
+export const SITE = 'https://specialist-abp.agenticcells.site';
+export const CARD = { path: '/assets/share/specialist-abp-1200x630.jpg', width: 1200, height: 630, type: 'image/jpeg',
+  alt: 'Agent Behaviour Policies, an AgentiCCells specialist: a behaviour policy for every agent, pipeline and cell, written the same way, and reviewed.' };
+const SUFFIX = ' From the AgentiCCells Agent Behaviour Policies specialist.';
+
+// A share description of 110 to 150 characters: cut at a word, or lengthen with the site's line.
+export function shareDescription(text) {
+  let d = text.replace(/\s+/g, ' ').trim();
+  if (d.length < 110) d = (d.replace(/[.:;,]?$/, '.') + SUFFIX).trim();
+  if (d.length < 110) d += ' Written the same way, and reviewed.';
+  if (d.length > 150) {
+    const cut = d.slice(0, 150);
+    const sentence = cut.lastIndexOf('. ');
+    d = sentence >= 109 ? cut.slice(0, sentence + 1) : cut.slice(0, 147).slice(0, cut.slice(0, 147).lastIndexOf(' ')).replace(/[\s,;:.(-]+$/, '') + '...';
+    if (d.length < 110) d = (d.slice(0, 149 - SUFFIX.length).replace(/\s+\S*$/, '').replace(/[\s,;:(-]+$/, '') + '.' + SUFFIX);
+  }
+  return d;
+}
+
+export function shareTags({ title, description, path }) {
+  const url = SITE + path;
+  const d = shareDescription(description);
+  const img = SITE + CARD.path;
+  return `<!-- share -->
+<link rel="canonical" href="${esc(url)}">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Agent Behaviour Policies specialist">
+<meta property="og:locale" content="en_GB">
+<meta property="og:url" content="${esc(url)}">
+<meta property="og:title" content="${esc(title)}">
+<meta property="og:description" content="${esc(d)}">
+<meta property="og:image" content="${img}">
+<meta property="og:image:type" content="${CARD.type}">
+<meta property="og:image:width" content="${CARD.width}">
+<meta property="og:image:height" content="${CARD.height}">
+<meta property="og:image:alt" content="${esc(CARD.alt)}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="${esc(title)}">
+<meta name="twitter:description" content="${esc(d)}">
+<meta name="twitter:image" content="${img}">
+<!-- /share -->`;
+}
+
+export function page({ title, description, body, depth, version, path }) {
   const up = depth ? '../'.repeat(depth) : '';
   return `<!doctype html>
 <html lang="en-GB">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+${shareTags({ title, description, path })}
 <title>${esc(title)}</title>
 <meta name="description" content="${esc(description)}">
 <link rel="stylesheet" href="${up}style.css">
@@ -141,11 +187,11 @@ export function renderAll(version) {
       mkdirSync(dirname(target), { recursive: true });
       writeFileSync(target, md);
       const titleLine = (md.match(/^#\s+(.+)$/m) || [, f])[1].replace(/`/g, '');
-      const firstPara = (md.split('\n\n').find((b) => b.trim() && !/^[#>|`-]/.test(b.trim())) || titleLine).replace(/\s+/g, ' ').replace(/[*`[\]]/g, '').slice(0, 220).trim();
+      const firstPara = (md.split('\n\n').find((b) => b.trim() && !/^([#>|`-]|\*\*(Status|Phase):)/.test(b.trim())) || titleLine).replace(/\[([^\]]+)\]\([^)]*\)/g, '$1').replace(/\s+/g, ' ').replace(/[*`[\]]/g, '').slice(0, 220).trim();
       const depth = relative('_site', dirname(target)).split('/').filter(Boolean).length;
       const twin = target.split('/').pop();
       const body = `${markdown(md)}\n<p class="muted">This page is generated from <a href="${twin}">${esc(twin)}</a>, its Markdown twin.</p>`;
-      writeFileSync(target.replace(/\.md$/, '.html'), page({ title: titleLine, description: firstPara, body, depth, version }));
+      writeFileSync(target.replace(/\.md$/, '.html'), page({ title: titleLine, description: firstPara, body, depth, version, path: '/' + relative('_site', target.replace(/\.md$/, '.html')) }));
       pages.push(target);
     }
   }
