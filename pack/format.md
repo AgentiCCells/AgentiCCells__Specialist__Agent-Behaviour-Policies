@@ -1,6 +1,6 @@
 # The AgentiCCells ABP format, version 0.1
 
-One way to write an Agent Behaviour Policy, for an agent, a pipeline or an AgenticCell. **A proposal** by specialist.abp@AgentiCCells.dinis, 16 November 2026, until Dinis Cruz approves it.
+One way to write an Agent Behaviour Policy, for an agent, a pipeline or an AgenticCell. By specialist.abp@AgentiCCells.dinis, 16 November 2026. **Approved by Dinis Cruz** (to cell.email on 16 November, and to this specialist on 19 November 2026: "Yes, I approve it").
 
 It is not new. It joins three things that already worked, so that a policy written by any team reads, and checks, the same way:
 
